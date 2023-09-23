@@ -13,12 +13,12 @@ function writePassword() {
   var characters = "";
 
   //Prompt for password length
-  var passwordLnegth = parseInt(
+  var passwordLength = parseInt(
     prompt("Enter a password length (between 8 and 128 characters)")
   );
 
   //Validate password length
-  if (isNaN(passwordLength) || passwordLength < 8 || passwordLnegth > 128) {
+  if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
     alert("please enter a valid paswword length between 8 and 128 characters");
     return "";
   }
@@ -55,4 +55,8 @@ function writePassword() {
   characters += specialChars;
   }
 
-  
+  // generate the password
+
+  var password = "";
+  for (var i = 0; i <passwordLength)
+}
