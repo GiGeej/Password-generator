@@ -29,5 +29,14 @@ function writePassword() {
   var includeNumeric = confirm("include numeric characters");
   var includeSpecial = confirm("include special characters?");
 
-  
+  //validate at least one character type is selected
+  if (
+    !includeLowercase &&
+    !includeNumeric &&
+    !includeSpecial &&
+    !includeUppercase
+  ) {
+    alert("at least one character type must be selected");
+    return "";
+  }
  
