@@ -1,62 +1,75 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
-function writePassword() {
-  //Define charcater sets for password criteria
-  var lowerCaseChar = "abcdefghijklmnopqrstuvwxyz";
-  var upperCaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+// Function to generate a random password
+function generatePassword() {
+  // Define character sets for password criteria
+  var lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
+  var uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var numericChars = "0123456789";
   var specialChars = "!@#$%^&*()-_=+[]{}|;:'\"<>,.?/";
 
-  // Initialize empty string for chars to include in the password
+  // Initialize an empty string for the characters to include in the password
   var characters = "";
 
-  //Prompt for password length
+  // Prompt for password length
   var passwordLength = parseInt(
-    prompt("Enter a password length (between 8 and 128 characters)")
+    prompt("Enter the desired password length (between 8 and 128 characters):")
   );
 
-  //Validate password length
+  // Validate password length
   if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
-    alert("please enter a valid paswword length between 8 and 128 characters");
+    alert("Please enter a valid password length between 8 and 128 characters.");
     return "";
   }
 
-  // confirm character types to include
-  var includeLowercase = confirm("include lowercase letters?");
-  var includeUppercase = confirm("include uppercase letters?");
-  var includeNumeric = confirm("include numeric characters");
-  var includeSpecial = confirm("include special characters?");
+  // Confirm character types to include
+  var includeLowercase = confirm("Include lowercase letters?");
+  var includeUppercase = confirm("Include uppercase letters?");
+  var includeNumeric = confirm("Include numeric characters?");
+  var includeSpecial = confirm("Include special characters?");
 
-  //validate at least one character type is selected
+  // Validate at least one character type is selected
   if (
     !includeLowercase &&
+    !includeUppercase &&
     !includeNumeric &&
-    !includeSpecial &&
-    !includeUppercase
+    !includeSpecial
   ) {
-    alert("at least one character type must be selected");
+    alert("At least one character type must be selected.");
     return "";
   }
- 
 
-  // build the character set based on selected criteria
-  if (includeLowercase){
-    characters += lowerCaseChar;
+  // Build the character set based on selected criteria
+  if (includeLowercase) {
+    characters += lowercaseChars;
   }
-  if (includeUppercase){
-    characters += upperCaseChar;
+  if (includeUppercase) {
+    characters += uppercaseChars;
   }
   if (includeNumeric) {
-  characters += numericChars;
+    characters += numericChars;
   }
-  if (includeSpecial){
-  characters += specialChars;
+  if (includeSpecial) {
+    characters += specialChars;
   }
 
-  // generate the password
-
+  // Generate the password
   var password = "";
-  for (var i = 0; i <passwordLength)
+  for (var i = 0; i < passwordLength; i++) {
+    var randomIndex = Math.floor(Math.random() * characters.length);
+    password += characters.charAt(randomIndex);
+  }
+
+  return password;
 }
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+  passwordText.value = password;
+}
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
