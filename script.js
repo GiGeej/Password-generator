@@ -40,3 +40,19 @@ function writePassword() {
     return "";
   }
  
+
+  // build the character set based on selected criteria
+  if (includeLowercase){
+    characters += lowerCaseChar;
+  }
+  if (includeUppercase){
+    characters += upperCaseChar;
+  }
+  if (includeNumeric) {
+  characters += numericChars;
+  }
+  if (includeSpecial){
+  characters += specialChars;
+  }
+
+  
