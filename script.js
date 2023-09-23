@@ -12,6 +12,12 @@ function generatePassword() {
   // Initialize an empty string for the characters to include in the password
   var characters = "";
 
+  // Confirm character types to include
+  var includeLowercase = confirm("Include lowercase letters?");
+  var includeUppercase = confirm("Include uppercase letters?");
+  var includeNumeric = confirm("Include numeric characters?");
+  var includeSpecial = confirm("Include special characters?");
+
   // Prompt for password length
   var passwordLength = parseInt(
     prompt("Enter the desired password length (between 8 and 128 characters):")
@@ -22,12 +28,6 @@ function generatePassword() {
     alert("Please enter a valid password length between 8 and 128 characters.");
     return "";
   }
-
-  // Confirm character types to include
-  var includeLowercase = confirm("Include lowercase letters?");
-  var includeUppercase = confirm("Include uppercase letters?");
-  var includeNumeric = confirm("Include numeric characters?");
-  var includeSpecial = confirm("Include special characters?");
 
   // Validate at least one character type is selected
   if (
